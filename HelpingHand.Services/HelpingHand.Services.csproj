@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelpingHand.Data\HelpingHand.Data.csproj">
+      <Project>{391C3996-AB85-4A3C-B354-D70792634ACF}</Project>
+      <Name>HelpingHand.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelpingHand.Models\HelpingHand.Models.csproj">
+      <Project>{F968CFC5-59EE-49D4-ABE8-291D3B363B82}</Project>
+      <Name>HelpingHand.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

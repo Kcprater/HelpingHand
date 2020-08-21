@@ -54,11 +54,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer\CustomerCreate.cs" />
+    <Compile Include="Customer\CustomerDetail.cs" />
+    <Compile Include="Customer\CustomerEdit.cs" />
+    <Compile Include="Customer\CustomerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderService\ProviderServiceCreate.cs" />
+    <Compile Include="ProviderService\ProviderServiceDetail.cs" />
+    <Compile Include="ProviderService\ProviderServiceEdit.cs" />
+    <Compile Include="Provider\ProviderCreate.cs" />
+    <Compile Include="Provider\ProviderDetail.cs" />
+    <Compile Include="Provider\ProviderEdit.cs" />
+    <Compile Include="Provider\ProviderListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HelpingHand.Data\HelpingHand.Data.csproj">
+      <Project>{391C3996-AB85-4A3C-B354-D70792634ACF}</Project>
+      <Name>HelpingHand.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

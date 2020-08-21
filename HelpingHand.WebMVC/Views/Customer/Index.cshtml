@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HelpingHand.Models.Customer.CustomerListItem>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create Customer", "Create")
+</p>
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var customer in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => customer.CustomerID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => customer.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => customer.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => customer.City)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => customer.State)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = customer.CustomerID }) |
+        @Html.ActionLink("Details", "Details", new { id = customer.CustomerID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = customer.CustomerID })
+    </td>
+</tr>
+}
+</table>
