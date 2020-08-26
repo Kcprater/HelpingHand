@@ -7,21 +7,16 @@ using System.Threading.Tasks;
 
 namespace HelpingHand.Models.ProviderService
 {
-    public class ProviderServiceEdit
+    public class ServiceDetail
     {
-        [Required]
         [Display(Name = "Service ID")]
         public int ServiceID { get; set; }
-        [Required]
         [Display(Name = "Provider ID")]
         public int ProviderID { get; set; }
-        [Required]
         [Display(Name = "ServiceType")]
         public string ServiceType { get; set; } //
-        [Required]
         [Display(Name = "Years of Experience")]
         public int Experience { get; set; }
-        [Required]
         [Display(Name = "Rate for Service")]
         public string Rate { get; set; }
     }

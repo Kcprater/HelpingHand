@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HelpingHand.Data
 {
-    public class ProviderService
+    public class Service
     {
         [Key]
         public int ServiceID { get; set; }

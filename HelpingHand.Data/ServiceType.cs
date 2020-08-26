@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace HelpingHand.Data
 {
+    public enum ServiceTypes { Home, Cleaning, Education, Music}
     public class ServiceType
     {
         [Key]

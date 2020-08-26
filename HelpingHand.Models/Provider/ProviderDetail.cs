@@ -13,6 +13,8 @@ namespace HelpingHand.Models.Provider
     {
         [Display(Name = "Provider ID")]
         public int ProviderID { get; set; }
+        [Display(Name = "ID")]
+        public Guid ID { get; set; }
         [Display(Name = "Provider Name")]
         public string Name { get; set; }
         [Display(Name = "Provider Email")]

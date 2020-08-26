@@ -1,4 +1,5 @@
 ﻿using HelpingHand.Models.Customer;
+using HelpingHand.Models.Provider;
 using HelpingHand.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -10,15 +11,15 @@ using System.Web.Mvc;
 namespace HelpingHand.WebMVC.Controllers
 {
     [Authorize]
-    public class CustomerController : Controller
+    public class ProviderController : Controller
     {
-        // GET: Customer
+        // GET: Provider
         public ActionResult Index()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new CustomerService(userID);
-            var customerModel = service.GetCustomers();
-            return View(customerModel);
+            var service = new ProviderService(userID);
+            var providerModel = service.GetProviders();
+            return View(providerModel);
         }
         public ActionResult Create()
         {
@@ -26,60 +27,67 @@ namespace HelpingHand.WebMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CustomerCreate model)
+        public ActionResult Create(ProviderCreate model)
         {
             if (!ModelState.IsValid)
                 return View(model);
-            var service = CreateCustomerService();
-            
-            if (service.CreateCustomer(model))
+            var service = CreateProviderService();
+
+            if (service.CreateProvider(model))
             {
-                TempData["SaveResult"] = "Customer Account Created!";
+                TempData["SaveResult"] = "Provider Account Created";
                 return RedirectToAction("Index");
             };
 
             ModelState.AddModelError("", "Error Creating Account");
             return View(model);
         }
+        private ProviderService CreateProviderService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ProviderService(userId);
+            return service;
+        }
         public ActionResult Details(int id)
         {
             //var svc = CreateCustomerService();
-            var model = CreateCustomerService().GetCustomerById(id);
+            var model = CreateProviderService().GetProviderById(id);
 
             return View(model);
         }
         public ActionResult Edit(int id)
         {
             //var service = CreateCustomerService();
-            var customer = CreateCustomerService().GetCustomerById(id);
+            var provider = CreateProviderService().GetProviderById(id);
             var model =
-                new CustomerEdit
+                new ProviderEdit
                 {
-                    CustomerID = customer.CustomerID,
-                    Name = customer.Name,
-                    Email = customer.Email,
-                    City = customer.City,
-                    State = customer.State
+                    ProviderID = provider.ProviderID,
+                    Name = provider.Name,
+                    Email = provider.Email,
+                    Phone = provider.Phone,
+                    City = provider.City,
+                    State = provider.State
                 };
             return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CustomerEdit model)
+        public ActionResult Edit(int id, ProviderEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.CustomerID != id)
+            if (model.ProviderID != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
 
-            var service = CreateCustomerService();
+            var service = CreateProviderService();
 
-            if (service.UpdateCustomer(model))
+            if (service.UpdateProvider(model))
             {
-                TempData["SaveResult"] = "Customer Account Updated.";
+                TempData["SaveResult"] = "Provided Account Updated.";
                 return RedirectToAction("Index");
             }
 
@@ -89,7 +97,7 @@ namespace HelpingHand.WebMVC.Controllers
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            var svc = CreateCustomerService().GetCustomerById(id);
+            var svc = CreateProviderService().GetProviderById(id);
             return View(svc);
         }
         [HttpPost]
@@ -97,19 +105,14 @@ namespace HelpingHand.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id)
         {
-            var service = CreateCustomerService();
+            var service = CreateProviderService();
 
-            service.CustomerDelete(id);
+            service.ProviderDelete(id);
 
-            TempData["SaveResult"] = "Customer Deleted.";
+            TempData["SaveResult"] = "Provicer Deleted.";
 
             return RedirectToAction("Index");
 
-        }
-        private CustomerService CreateCustomerService()
-        {
-            var service = new CustomerService(Guid.Parse(User.Identity.GetUserId()));
-            return service;
         }
     }
 }

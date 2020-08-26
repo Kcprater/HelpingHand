@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HelpingHand.Models.ProviderService
 {
-    public class ProviderServiceCreate
+    public class ServiceCreate
     {
         public int ProviderID { get; set; }
         [Required]

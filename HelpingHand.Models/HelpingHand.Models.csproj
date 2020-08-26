@@ -59,9 +59,9 @@
     <Compile Include="Customer\CustomerEdit.cs" />
     <Compile Include="Customer\CustomerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProviderService\ProviderServiceCreate.cs" />
-    <Compile Include="ProviderService\ProviderServiceDetail.cs" />
-    <Compile Include="ProviderService\ProviderServiceEdit.cs" />
+    <Compile Include="Service\ProviderServiceCreate.cs" />
+    <Compile Include="Service\ProviderServiceDetail.cs" />
+    <Compile Include="Service\ProviderServiceEdit.cs" />
     <Compile Include="Provider\ProviderCreate.cs" />
     <Compile Include="Provider\ProviderDetail.cs" />
     <Compile Include="Provider\ProviderEdit.cs" />
