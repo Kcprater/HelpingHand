@@ -7,13 +7,13 @@ namespace HelpingHand.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class Roles : IMigrationMetadata
+    public sealed partial class CreateServicesTest : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Roles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateServicesTest));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008261648011_Roles"; }
+            get { return "202008311351115_CreateServicesTest"; }
         }
         
         string IMigrationMetadata.Source

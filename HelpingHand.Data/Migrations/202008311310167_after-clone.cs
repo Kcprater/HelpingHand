@@ -3,7 +3,7 @@ namespace HelpingHand.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class afterclone : DbMigration
     {
         public override void Up()
         {
@@ -35,7 +35,7 @@ namespace HelpingHand.Data.Migrations
                 .PrimaryKey(t => t.ProviderID);
             
             CreateTable(
-                "dbo.ProviderService",
+                "dbo.Service",
                 c => new
                     {
                         ServiceID = c.Int(nullable: false, identity: true),
@@ -76,6 +76,7 @@ namespace HelpingHand.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(),
                         Email = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -125,18 +126,18 @@ namespace HelpingHand.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.ProviderService", "ProviderID", "dbo.Provider");
+            DropForeignKey("dbo.Service", "ProviderID", "dbo.Provider");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.ProviderService", new[] { "ProviderID" });
+            DropIndex("dbo.Service", new[] { "ProviderID" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
-            DropTable("dbo.ProviderService");
+            DropTable("dbo.Service");
             DropTable("dbo.Provider");
             DropTable("dbo.Customer");
         }

@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace HelpingHand.Data
 {
-    public enum ServiceTypes { Home, Cleaning, Education, Music}
     public class ServiceType
     {
         [Key]
         public int ServiceTypeID { get; set; }
-        [Required]
-        public string Category { get; set; }
+        //[Required]
+        //public Category Category { get; set; }
         [Required]
         public string Subcategory { get; set; }
     }

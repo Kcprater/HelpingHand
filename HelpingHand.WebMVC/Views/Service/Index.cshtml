@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HelpingHand.Models.Service.ServiceListItem>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+        @Html.ActionLink("Create Service", "Create")
+    </p>
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var service in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => service.ServiceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => service.ProviderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => service.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => service.Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelIem => service.Rate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = service.ServiceID }) |
+                @Html.ActionLink("Details", "Details", new { id = service.ServiceID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = service.ServiceID })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+@*<button type="button"> Add Service </button>*@

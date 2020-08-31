@@ -13,6 +13,8 @@ using HelpingHand.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web.Security;
 
 namespace HelpingHand.WebMVC.Controllers
 {
@@ -82,9 +84,18 @@ namespace HelpingHand.WebMVC.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
+                    //if (context.Roles.Equals("Provider"))
+                    //{
+                    //    return RedirectToAction("Index", "Provider");
+                    //}
+                    //else
+                    //{
+                    //    return RedirectToAction("Index", "Customer");
+                    //}
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

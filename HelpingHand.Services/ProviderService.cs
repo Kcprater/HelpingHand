@@ -10,16 +10,16 @@ namespace HelpingHand.Services
 {
     public class ProviderService
     {
-        private readonly Guid _providerID;
+        private readonly Guid _ID;
         public ProviderService(Guid Id)
         {
-            _providerID = Id;
+            _ID = Id;
         }
         public bool CreateProvider(ProviderCreate model)
         {
             var provider = new Provider()
             {
-                ID = _providerID,
+                ID = _ID,
                 Name = model.Name,
                 Email = model.Email,
                 Phone = model.Phone,
@@ -36,7 +36,7 @@ namespace HelpingHand.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var providerQuery = ctx.Providers.Where(e => e.ID == _providerID).Select(e => new ProviderListItem
+                var providerQuery = ctx.Providers.Where(e => e.ID == _ID).Select(e => new ProviderListItem
                 {
                     ProviderID = e.ProviderID,
                     Name = e.Name,
@@ -70,7 +70,7 @@ namespace HelpingHand.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var provider = ctx.Providers.Single(e => e.ProviderID == model.ProviderID && e.ID == _providerID);
+                var provider = ctx.Providers.Single(e => e.ProviderID == model.ProviderID && e.ID == _ID);
                 provider.Name = model.Name;
                 provider.Email = model.Email;
                 provider.Phone = model.Phone;
@@ -83,7 +83,7 @@ namespace HelpingHand.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var provider = ctx.Providers.Single(e => e.ProviderID == providerId && e.ID == _providerID);
+                var provider = ctx.Providers.Single(e => e.ProviderID == providerId && e.ID == _ID);
                 ctx.Providers.Remove(provider);
                 return ctx.SaveChanges() == 1;
             }

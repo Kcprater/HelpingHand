@@ -1,10 +1,12 @@
-﻿using HelpingHand.Models.Customer;
+﻿using HelpingHand.Data;
+using HelpingHand.Models.Customer;
 using HelpingHand.Models.Provider;
 using HelpingHand.Services;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Web.Mvc;
 
@@ -48,6 +50,31 @@ namespace HelpingHand.WebMVC.Controllers
             var service = new ProviderService(userId);
             return service;
         }
+        public IEnumerable<ProviderListItem> GetProviderLists()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Providers.Select(p => new ProviderListItem
+                {
+                    ProviderID = p.ProviderID,
+                    Name = p.Name,
+                    Phone = p.Phone,
+                    City = p.City,
+                    State = p.State
+                });
+
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<Provider> GetProviders()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Providers.ToList();
+            }
+        }
+
         public ActionResult Details(int id)
         {
             //var svc = CreateCustomerService();

@@ -56,21 +56,13 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202008211743393_InitialCreate.cs" />
-    <Compile Include="Migrations\202008211743393_InitialCreate.Designer.cs">
-      <DependentUpon>202008211743393_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202008311310167_after-clone.cs" />
+    <Compile Include="Migrations\202008311310167_after-clone.Designer.cs">
+      <DependentUpon>202008311310167_after-clone.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008251335516_FirstMigration.cs" />
-    <Compile Include="Migrations\202008251335516_FirstMigration.Designer.cs">
-      <DependentUpon>202008251335516_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008251833033_MessingWithLogin.cs" />
-    <Compile Include="Migrations\202008251833033_MessingWithLogin.Designer.cs">
-      <DependentUpon>202008251833033_MessingWithLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008261648011_Roles.cs" />
-    <Compile Include="Migrations\202008261648011_Roles.Designer.cs">
-      <DependentUpon>202008261648011_Roles.cs</DependentUpon>
+    <Compile Include="Migrations\202008311351115_CreateServicesTest.cs" />
+    <Compile Include="Migrations\202008311351115_CreateServicesTest.Designer.cs">
+      <DependentUpon>202008311351115_CreateServicesTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,17 +75,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008211743393_InitialCreate.resx">
-      <DependentUpon>202008211743393_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008311310167_after-clone.resx">
+      <DependentUpon>202008311310167_after-clone.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008251335516_FirstMigration.resx">
-      <DependentUpon>202008251335516_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008251833033_MessingWithLogin.resx">
-      <DependentUpon>202008251833033_MessingWithLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008261648011_Roles.resx">
-      <DependentUpon>202008261648011_Roles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008311351115_CreateServicesTest.resx">
+      <DependentUpon>202008311351115_CreateServicesTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

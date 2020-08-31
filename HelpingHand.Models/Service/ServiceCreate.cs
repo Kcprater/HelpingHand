@@ -1,23 +1,19 @@
-﻿using System;
+﻿using HelpingHand.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelpingHand.Models.ProviderService
+namespace HelpingHand.Models.Service
 {
-    public class ServiceEdit
+    public class ServiceCreate
     {
-        [Required]
-        [Display(Name = "Service ID")]
-        public int ServiceID { get; set; }
-        [Required]
-        [Display(Name = "Provider ID")]
         public int ProviderID { get; set; }
         [Required]
-        [Display(Name = "ServiceType")]
-        public string ServiceType { get; set; } //
+        [Display (Name = "ServiceType")]
+        public Category Category { get; set; } 
         [Required]
         [Display(Name = "Years of Experience")]
         public int Experience { get; set; }

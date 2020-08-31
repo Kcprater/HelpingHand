@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace HelpingHand.Data
 {
+    public enum Category { Home, Cleaning, Education, Music }
+
     public class Service
     {
         [Key]
         public int ServiceID { get; set; }
         [Required]
-        [ForeignKey(nameof(Provider))]
+        public Guid ID { get; set; }
+        //[Required]
         public int ProviderID { get; set; }
-        public Provider Provider { get; set; }
+        [ForeignKey(nameof(ProviderID))]
+        public virtual Provider Provider { get; set; }
+        [Required]
+        public Category Category { get; set; }
         [Required]
         public int Experience { get; set; }
         [Required]
