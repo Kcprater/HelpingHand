@@ -25,7 +25,5 @@ namespace HelpingHand.Models.Provider
         public string City { get; set; }
         [Display(Name = "State")]
         public string State { get; set; }
-        //[Display(Name = "Services Offered")]
-        //public List<ProviderService> ProviderServices { get; set; }
     }
 }

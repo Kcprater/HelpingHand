@@ -7,13 +7,13 @@ namespace HelpingHand.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class afterclone : IMigrationMetadata
+    public sealed partial class cascadingdropdowns : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(afterclone));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cascadingdropdowns));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008311310167_after-clone"; }
+            get { return "202009021429122_cascadingdropdowns"; }
         }
         
         string IMigrationMetadata.Source

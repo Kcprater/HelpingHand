@@ -14,8 +14,10 @@ namespace HelpingHand.Models.Service
         public int ServiceID { get; set; }
         [Display(Name = "Provider ID")]
         public int ProviderID { get; set; }
-        [Display(Name = "ServiceType")]
-        public Category Category { get; set; }
+        [Display(Name = "Category")]
+        public string Category { get; set; }
+        [Display(Name = "Subcategory")]
+        public string Subcategory { get; set; }
         [Display(Name = "Years of Experience")]
         public int Experience { get; set; }
         [Display(Name = "Rate for Service")]

@@ -22,6 +22,7 @@ namespace HelpingHand.Services
                 ID = _ID,
                 ProviderID = model.ProviderID,
                 Category = model.Category,
+                Subcategory = model.Subcategory,
                 Experience = model.Experience,
                 Rate = model.Rate,
             };
@@ -40,6 +41,7 @@ namespace HelpingHand.Services
                     ServiceID = e.ServiceID,
                     ProviderID = e.ProviderID,
                     Category = e.Category,
+                    Subcategory = e.Subcategory,
                     Experience = e.Experience,
                     Rate = e.Rate,
                 }
@@ -58,6 +60,7 @@ namespace HelpingHand.Services
                     ProviderID = service.ProviderID,
                     ID = service.ID,
                     Category = service.Category,
+                    Subcategory = service.Subcategory,
                     Experience = service.Experience,
                     Rate = service.Rate,
                 };
@@ -69,6 +72,7 @@ namespace HelpingHand.Services
             {
                 var service = ctx.Services.Single(e => e.ServiceID == model.ServiceID && e.ID == _ID);
                 service.Category = model.Category;
+                service.Subcategory = model.Subcategory;
                 service.Experience = model.Experience;
                 service.Rate = model.Rate;
                 return ctx.SaveChanges() == 1;

@@ -35,6 +35,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Subcategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subcategory)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Experience)
         </dt>
 
@@ -53,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiceID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

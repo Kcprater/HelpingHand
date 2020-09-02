@@ -21,27 +21,35 @@ namespace HelpingHand.WebMVC.Controllers
             var service = new ServiceService(userID);
             var serviceModel = service.GetServices();
             return View(serviceModel);
-            //return View(CreateServiceService().GetServices());
         }
         public ActionResult Create()
         {
+            List<SelectListItem> li = new List<SelectListItem>();
+            li.Add(new SelectListItem { Text = "Select", Value = "0" });
+            li.Add(new SelectListItem { Text = "Music", Value = "1" });
+            li.Add(new SelectListItem { Text = "Education", Value = "2" });
+            ViewData["category"] = li;
             return View();
         }
-        //public ActionResult Create(Guid userID)
-        //{
-        //    ViewBag.Title = "New Service";
+        public JsonResult GetSubcategories(string id)
+        {
+            List<SelectListItem> subcatgories = new List<SelectListItem>();
+            switch (id)
+            {
+                case "1":
+                    subcatgories.Add(new SelectListItem { Text = "Select", Value = "0" });
+                    subcatgories.Add(new SelectListItem { Text = "Piano", Value = "1" });
+                    subcatgories.Add(new SelectListItem { Text = "Guitar", Value = "2" });
+                    break;
+                case "2":
+                    subcatgories.Add(new SelectListItem { Text = "Select", Value = "0" });
+                    subcatgories.Add(new SelectListItem { Text = "Math", Value = "1" });
+                    subcatgories.Add(new SelectListItem { Text = "Reading", Value = "2" });
+                    break;
+            }
+            return Json(new SelectList(subcatgories, "Value", "Text"));
+        }
 
-        //    List<Provider> Providers = new ProviderService().GetProviders().ToList();
-        //    var query = from p in Providers
-        //                select new SelectListItem()
-        //                {
-        //                    Value = p.ID.ToString(),
-        //                    Text = p.Name
-        //                };
-        //    ViewBag.ProviderID = query.ToList();
-
-        //    return View();
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ServiceCreate model)
@@ -74,18 +82,12 @@ namespace HelpingHand.WebMVC.Controllers
         }
         public ActionResult Edit(int id)
         {
-            //var service = CreateCustomerService();
+            List<SelectListItem> li = new List<SelectListItem>();
+            li.Add(new SelectListItem { Text = "Select", Value = "0" });
+            li.Add(new SelectListItem { Text = "Music", Value = "1" });
+            li.Add(new SelectListItem { Text = "Education", Value = "2" });
+            ViewData["category"] = li;
             var providerService = CreateServiceService().GetServiceById(id);
-
-            //List<Provider> Providers = (new ProviderService()).GetProviders().ToList();
-
-            //var query = from p in Providers
-            //            select new SelectListItem()
-            //            {
-            //                Value = p.ProviderID.ToString(),
-            //                Text = p.Name
-            //            };
-            //ViewBag.ProviderID = query.ToList();
 
             var model =
                 new ServiceEdit
@@ -93,6 +95,7 @@ namespace HelpingHand.WebMVC.Controllers
                     ServiceID = providerService.ServiceID,
                     ProviderID = providerService.ProviderID,
                     Category = providerService.Category,
+                    Subcategory = providerService.Subcategory,
                     Experience = providerService.Experience,
                     Rate = providerService.Rate,
                 };
@@ -139,7 +142,6 @@ namespace HelpingHand.WebMVC.Controllers
             TempData["SaveResult"] = "Provicer Deleted.";
 
             return RedirectToAction("Index");
-
         }
     }
 }

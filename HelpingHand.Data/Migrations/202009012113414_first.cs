@@ -3,7 +3,7 @@ namespace HelpingHand.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class afterclone : DbMigration
+    public partial class first : DbMigration
     {
         public override void Up()
         {
@@ -35,19 +35,6 @@ namespace HelpingHand.Data.Migrations
                 .PrimaryKey(t => t.ProviderID);
             
             CreateTable(
-                "dbo.Service",
-                c => new
-                    {
-                        ServiceID = c.Int(nullable: false, identity: true),
-                        ProviderID = c.Int(nullable: false),
-                        Experience = c.Int(nullable: false),
-                        Rate = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.ServiceID)
-                .ForeignKey("dbo.Provider", t => t.ProviderID, cascadeDelete: true)
-                .Index(t => t.ProviderID);
-            
-            CreateTable(
                 "dbo.IdentityRole",
                 c => new
                     {
@@ -70,6 +57,21 @@ namespace HelpingHand.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.ApplicationUser_Id);
+            
+            CreateTable(
+                "dbo.Service",
+                c => new
+                    {
+                        ServiceID = c.Int(nullable: false, identity: true),
+                        ID = c.Guid(nullable: false),
+                        ProviderID = c.Int(nullable: false),
+                        Category = c.Int(nullable: false),
+                        Experience = c.Int(nullable: false),
+                        Rate = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.ServiceID)
+                .ForeignKey("dbo.Provider", t => t.ProviderID, cascadeDelete: true)
+                .Index(t => t.ProviderID);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -125,19 +127,19 @@ namespace HelpingHand.Data.Migrations
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.Service", "ProviderID", "dbo.Provider");
+            DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.Service", new[] { "ProviderID" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Service", new[] { "ProviderID" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
+            DropTable("dbo.Service");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
-            DropTable("dbo.Service");
             DropTable("dbo.Provider");
             DropTable("dbo.Customer");
         }

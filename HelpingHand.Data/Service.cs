@@ -5,11 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace HelpingHand.Data
 {
-    public enum Category { Home, Cleaning, Education, Music }
-
     public class Service
     {
         [Key]
@@ -21,7 +20,9 @@ namespace HelpingHand.Data
         [ForeignKey(nameof(ProviderID))]
         public virtual Provider Provider { get; set; }
         [Required]
-        public Category Category { get; set; }
+        public string Category { get; set; }
+        [Required]
+        public string Subcategory { get; set; }
         [Required]
         public int Experience { get; set; }
         [Required]
